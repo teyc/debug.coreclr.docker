@@ -6,7 +6,12 @@ namespace CoreClrDocker
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            while (true)
+            {
+                Console.WriteLine("Sleeping 5 seconds");
+                System.Threading.Thread.Sleep(5000);
+                Console.WriteLine("Hello World!");
+            }
         }
     }
 }
