@@ -1,20 +1,16 @@
-FROM microsoft/dotnet:2.0-sdk
+FROM microsoft/dotnet:2.0-runtime
 
-# install vsdbg
+# install vsdbg and ps
 ENV NUGET_XMLDOC_MODE skip
 WORKDIR /vsdbg
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
-        unzip \
+        unzip procps \
     && rm -rf /var/lib/apt/lists/* \
     && curl -sSL https://aka.ms/getvsdbgsh | bash /dev/stdin -v latest -l /vsdbg
 
-# restore watcher
-WORKDIR /app
-COPY CoreClrDocker.csproj .
-RUN dotnet restore
-
 # require app to be mounted
+WORKDIR /app
 VOLUME ["/app"]
+CMD dotnet CoreClrDocker.dll
 
-ENTRYPOINT ["dotnet", "watch", "run"]

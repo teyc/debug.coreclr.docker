@@ -18,7 +18,7 @@
                 "pipeArgs": [
                     "exec",
                     "-i",
-                    "src"
+                    "demo"
                 ],
                 "debuggerPath": "/vsdbg/vsdbg",
                 "quoteArgs": false

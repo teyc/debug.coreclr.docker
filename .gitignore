@@ -1,3 +1,4 @@
 .vscode/symbols.json
 bin/
 obj/
+out/
