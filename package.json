@@ -1,0 +1,38 @@
+{
+  "name": "CoreClrDocker",
+  "version": "1.0.0",
+  "description": "Instructions for trying out the sample are at the bottom of this post.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "watch": {
+    "docker:restart": {
+      "patterns": ["out"],
+      "extensions": "*",
+      "delay": 500
+    },
+    "publish": {
+      "patterns": ["src"],
+      "ignore": ["src/bin", "src/obj"],
+      "extensions": "*",
+      "delay": 500
+    }
+  },
+  "scripts": {
+    "start": "npm-watch",
+    "docker:restart": "powershell ./scripts/Restart-Docker.ps1",
+    "publish": "cd src && dotnet publish -o ../out"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/teyc/debug.coreclr.docker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/teyc/debug.coreclr.docker/issues"
+  },
+  "homepage": "https://github.com/teyc/debug.coreclr.docker#readme"
+}

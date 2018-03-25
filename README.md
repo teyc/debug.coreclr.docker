@@ -71,15 +71,13 @@ First we'll need to build our docker image. This is once off
 
     docker build src/ -t chui/demo
 
-Then we run a little watch window publishing the .NET Core project
-each time the source changes
+Then let's install some `npm` packages to watch for file system changes.
 
-    cd src
-    dotnet watch publish -o out
+    npm install
 
-Next we run another terminal, and launch the docker image
+Then we can start
 
-    docker run -it --name demo --rm -v "${pwd}\src\out:/app" chui/demo
+    npm start
 
 At this stage, you should be able to
 
@@ -89,20 +87,14 @@ At this stage, you should be able to
 
 3. and run the `Remote .NET Core Attach`
 
-4. make some code changes
-
-5. CTRL+C the `demo` container
-
-6. Run `docker run -it --name demo --rm -v "${pwd}\src\out:/app" chui/demo` again
+4. make some code changes, hit save, and this should
+   trigger automatic recompilation and redeployment,
+   all under 5 seconds
 
 # Further improvements
 
-1. Steps 5 and 6 can be tedious. Why not watch the published output folder
-and restart the docker container each time the contents
-changes?
+1. AngularJS artifacts should be mounted
 
-2. AngularJS artifacts should be mounted
+2. Trigger browser reload if AngularJS artifacts changes
 
-3. Trigger browser reload if AngularJS artifacts changes
-
-4. Debug tests in the container
+3. Debug tests in the container
