@@ -1,4 +1,5 @@
 using System;
+using System.Reflection;
 using Xunit;
 
 namespace CoreClrDocker.Test
@@ -8,7 +9,7 @@ namespace CoreClrDocker.Test
         [Fact]
         public void Test1()
         {
-
+            Assert.Equal(1, typeof(Program).GetMethods(BindingFlags.Static | BindingFlags.NonPublic).Length);
         }
     }
 }
