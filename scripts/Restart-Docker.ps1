@@ -1,5 +1,8 @@
-if (docker ps -f name=demo -q)
+$image = "chui/demo"
+$container = "demo"
+
+if (docker ps -f name=$container -q)
 {
-    docker kill demo
+    docker kill $container
 }
-docker run --name demo --rm --interactive -v "$pwd\out:/app" chui/demo
+docker run --name $container --rm --interactive -v "$pwd\out:/app" $image
