@@ -6,6 +6,7 @@
 
 `.\scripts\Watch-OutDirectory.ps1` stops docker every time published output changes
 
-You'll have to run all three in tandem. It takes about 15 seconds to see change,
-which is unacceptably slow.
+You'll have to run all three in tandem. It takes about <strike>15 seconds to see change, which is unacceptably slow</strike>. Using `docker kill`, restarts take about 5 seconds.
+
+
 

@@ -9,7 +9,7 @@ $global:last = [DateTime]::Now
     if ($seconds -gt 1.0)
     {
         "Stopping docker"
-        docker stop demo
+        docker kill demo
         $global:last = $now
     }
 }
