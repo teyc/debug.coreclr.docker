@@ -36,7 +36,7 @@ The only officially supported way to prepare an application for deployment is vi
 
 So our command line on the host should look like:
 
-    docker watch publish
+    dotnet watch publish
 
 ## 2 Deploying the binary
 
@@ -59,8 +59,9 @@ Note we name our container, and _remove_ it when the container terminates.
 
 ## 4 attaching to a process for debugging
 
-Our development image is built with `vsdbg` installed on `/vsdbg/vsdbg`. This is remote debugging host inside the docker container, and when launched will attach
-to a process id.  `vsdbg` communicates with the debugging client (our IDE) via stdin and stdout. This can be accomplished relatively easily in our development environment via
+Our development image is built with `vsdbg` pre-installed. This is a remote debugging host inside the docker container,
+and when launched will attach itself to a given process id.  `vsdbg` communicates with the debugging client (our IDE) via
+stdin and stdout and can be accomplished relatively easily in our development environment via
 
     # called by vscode. Doesn't work on the command line
     docker exec -i MYPROJECT /vsdbg/vsdbg
@@ -98,3 +99,6 @@ At this stage, you should be able to
 2. Trigger browser reload if AngularJS artifacts changes
 
 3. Debug tests in the container
+
+4. How does this work in the context of `docker-compose`?
+
