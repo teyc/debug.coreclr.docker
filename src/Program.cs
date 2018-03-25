@@ -8,8 +8,8 @@ namespace CoreClrDocker
         {
             while (true)
             {
-                Console.WriteLine("Sleeping 5 seconds");
-                System.Threading.Thread.Sleep(5000);
+                Console.WriteLine("Sleeping 2 seconds");
+                System.Threading.Thread.Sleep(1000);
                 Console.WriteLine("Hello World!");
             }
         }

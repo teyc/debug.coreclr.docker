@@ -1,5 +1,11 @@
 # Launching and attaching to a .NET Core process in Docker with VS Code
 
+## In a hurry?
+
+Instructions for trying out the sample are at the bottom of this post.
+
+## Background
+
 I'm currently working with a project that has multiple microservices
 running in Docker containers. I found working with Visual Studio extremely
 clumsy. The `docker-compose` extension to Visual Studio is slow, and can
@@ -82,3 +88,21 @@ At this stage, you should be able to
 2. set some breakpoints
 
 3. and run the `Remote .NET Core Attach`
+
+4. make some code changes
+
+5. CTRL+C the `demo` container
+
+6. Run `docker run -it --name demo --rm -v "${pwd}\src\out:/app" chui/demo` again
+
+# Further improvements
+
+1. Steps 5 and 6 can be tedious. Why not watch the published output folder
+and restart the docker container each time the contents
+changes?
+
+2. AngularJS artifacts should be mounted
+
+3. Trigger browser reload if AngularJS artifacts changes
+
+4. Debug tests in the container
