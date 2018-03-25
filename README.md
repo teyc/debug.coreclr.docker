@@ -79,6 +79,10 @@ stdin and stdout and can be accomplished relatively easily in our development en
 
 4. How does this work in the context of `docker-compose`?
 
+# Notes and references
+
+see [notes](Notes.md)
+
 ## Try it out
 
 Instructions for trying out the sample are [here](RunTheDemo.md)
