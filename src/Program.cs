@@ -1,4 +1,7 @@
 ﻿using System;
+using Microsoft.AspNetCore;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
 
 namespace CoreClrDocker
 {
@@ -6,12 +9,15 @@ namespace CoreClrDocker
     {
         static void Main(string[] args)
         {
-            while (true)
-            {
-                Console.WriteLine("Sleeping 2 seconds");
-                System.Threading.Thread.Sleep(1000);
-                Console.WriteLine("Hello World!");
-            }
+            var host = WebHost.CreateDefaultBuilder(args)
+                .UseUrls("http://*:5000")
+                .UseKestrel()
+                .Configure(app => {
+                    app.UseStaticFiles();
+                })
+                .Build();
+
+            host.Run();
         }
     }
 }

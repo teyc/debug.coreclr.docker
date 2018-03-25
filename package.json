@@ -8,21 +8,29 @@
   },
   "watch": {
     "docker:restart": {
-      "patterns": ["out"],
+      "patterns": [
+        "out"
+      ],
       "extensions": "*",
       "delay": 500
     },
-    "publish": {
-      "patterns": ["src"],
-      "ignore": ["src/bin", "src/obj"],
+    "dotnet:build": {
+      "patterns": [
+        "src"
+      ],
+      "ignore": [
+        "src/bin",
+        "src/obj"
+      ],
       "extensions": "*",
       "delay": 500
     }
   },
   "scripts": {
-    "start": "npm-watch",
+    "start": "parallelshell \"npm run ng:build\" \"npm-watch\"",
     "docker:restart": "powershell ./scripts/Restart-Docker.ps1",
-    "publish": "cd src && dotnet publish -o ../out"
+    "ng:build": "cd web && ng build --watch",
+    "dotnet:build": "cd src && dotnet publish -o ../out"
   },
   "repository": {
     "type": "git",
@@ -34,5 +42,8 @@
   "bugs": {
     "url": "https://github.com/teyc/debug.coreclr.docker/issues"
   },
-  "homepage": "https://github.com/teyc/debug.coreclr.docker#readme"
+  "homepage": "https://github.com/teyc/debug.coreclr.docker#readme",
+  "devDependencies": {
+    "parallelshell": "^3.0.2"
+  }
 }
